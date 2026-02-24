@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryLatexBackend", "DryLatexBackend\DryLatexBackend.csproj", "{8016B18A-C293-4F06-B685-4CE3A561F7D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8016B18A-C293-4F06-B685-4CE3A561F7D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8016B18A-C293-4F06-B685-4CE3A561F7D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8016B18A-C293-4F06-B685-4CE3A561F7D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8016B18A-C293-4F06-B685-4CE3A561F7D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {547CB795-A284-4ACE-8153-DCAD36403B2E}
+	EndGlobalSection
+EndGlobal
