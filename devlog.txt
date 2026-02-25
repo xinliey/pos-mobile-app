@@ -1,0 +1,19 @@
+Development Log – DryLatex Mobile App (MAUI)
+
+Tech Stack
+.NET MAUI (.NET 8)
+ASP.NET Core Backend
+Android SDK 34
+REST API
+
+2026/2/25
+Bug Encountered & fixed:
+missing resources and fixed AndroidManifest config
+Apk installation failed due to missing certificate
+Debug Keystore not found 
+Build cache conflicts 
+
+Next Steps : 
+fix mobile api connection issue 
+test printing workflow 
+prepare production build 

@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\",
+  "WorkspaceRootPath": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\source\\repos\\drylatexbackend\\drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\drylatexbackend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\drylatexbackend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\source\\repos\\drylatexbackend\\drylatexbackend\\printtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\printtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\printtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\source\\repos\\drylatexbackend\\drylatexbackend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\source\\repos\\drylatexbackend\\drylatexbackend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 581,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,11 +46,37 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "DryLatexBackend\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "DryLatexBackend\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:01:58.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "DryLatexBackend.http",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\DryLatexBackend.http",
+              "RelativeDocumentMoniker": "DryLatexBackend\\DryLatexBackend.http",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\DryLatexBackend.http",
+              "RelativeToolTip": "DryLatexBackend\\DryLatexBackend.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-02-25T09:01:53.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "WeatherForecast.cs",
-              "DocumentMoniker": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\WeatherForecast.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\WeatherForecast.cs",
-              "ToolTip": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\WeatherForecast.cs",
               "RelativeToolTip": "DryLatexBackend\\WeatherForecast.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -50,38 +84,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Program.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\Program.cs",
-              "ToolTip": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\Program.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Program.cs",
               "RelativeToolTip": "DryLatexBackend\\Program.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAIAAAADAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T07:08:02.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "DryLatexBackend\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Properties\\launchSettings.json",
               "RelativeToolTip": "DryLatexBackend\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-23T06:55:18.938Z"
+              "WhenOpened": "2026-02-23T06:55:18.938Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PrintTest.cs",
-              "DocumentMoniker": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\PrintTest.cs",
-              "ToolTip": "C:\\Users\\xinxi\\source\\repos\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
               "RelativeToolTip": "DryLatexBackend\\PrintTest.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAIwA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T06:50:29.657Z",
               "EditorCaption": ""
