@@ -18,19 +18,20 @@
                 var response = await client.PostAsync(
                     "http://192.168.1.147:5205/api/print",
                     null);
+                string result = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Success", "Printed!", "OK");
+                    await DisplayAlert("Success", "success", "OK");
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Print failed", "OK");
+                    await DisplayAlert("Error", $"Status: {response.StatusCode}\n\n{result}", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.Message, "OK");
+                await DisplayAlert("Error", ex.ToString(), "OK");
             }
         }
     }

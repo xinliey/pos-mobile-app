@@ -13,7 +13,14 @@ Apk installation failed due to missing certificate
 Debug Keystore not found 
 Build cache conflicts 
 
+2026/2/26
+Bug Encountered & fixed:
+Fixed SocketException by enabling Internet and cleartext HTTP in AndroidManifest.
+Backend stopped responding after PC IP changed
+updated API address and connection works again.
+Successfully connected printer via Bluetooth COM port and enabled auto-cut command.
+Thermal printer prints Thai text as Chinese characters.
+
 Next Steps : 
-fix mobile api connection issue 
-test printing workflow 
-prepare production build 
+encoding problem still under investigation.
+billing format design
