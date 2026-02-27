@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Ports;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DryLatexBackend.Controllers
 {
@@ -12,50 +15,139 @@ namespace DryLatexBackend.Controllers
         [HttpPost]
         public IActionResult Print()
         {
+            Bitmap bmp = new Bitmap(384, 650);
+            Graphics g = Graphics.FromImage(bmp);
+
+            g.Clear(Color.White);
+
+            System.Drawing.Font titleFont = new System.Drawing.Font("Tahoma", 32, FontStyle.Bold);
+            System.Drawing.Font font = new System.Drawing.Font("Tahoma", 30);
+            int leftX = 2;
+            int rightX = 390;
+            int y = 0;
+
+            g.DrawString("ร้านเกสรคลองแงะ", titleFont, Brushes.Black, leftX, y);
+            y += 60;
+
+            g.DrawString("ชื่อ: สมชาย", font, Brushes.Black, leftX, y);
+            y += 40;
+
+            g.DrawString("วันที่: 2026/2/26", font, Brushes.Black, leftX, y);
+            y += 40;
+
+            g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
+            y += 40;
+
+            DrawLeftRight(g, font, "น้ำหนัก", "20 กก", leftX, rightX, y);
+            y += 40;
+
+            DrawLeftRight(g, font, "เข่ง", "0 กก", leftX, rightX, y);
+            y += 40;
+
+            DrawLeftRight(g, font, "หัก", "3 กก", leftX, rightX, y);
+            y += 40;
+
+            DrawLeftRight(g, font, "คงเหลือ", "17 กก", leftX, rightX, y);
+            y += 40;
+
+            DrawLeftRight(g, font, "ราคา", "30 บ.", leftX, rightX, y);
+            y += 40;
+
+            g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
+            y += 50;
+
+            DrawLeftRight(g, titleFont, "เป็นเงิน", "510 บาท", leftX, rightX, y);
+            y += 60;
+            Console.WriteLine("Final Y = " + y);
             SerialPort port = new SerialPort("COM3", 9600);
             port.Open();
 
-            // Thai support
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var stream = port.BaseStream;
 
-            Encoding thai = Encoding.GetEncoding("windows-874");
-            //byte[] thaiMode = new byte[] { 0x1B, 0x74, 0x16 };
-            //port.Write(thaiMode, 0, thaiMode.Length);
-            string receipt =
-                "ร้านยางเกสรคลองแงะ\r\n" +
-                "ชื่อ: ลูกค้า\r\n" +
-                "วันที่: 2026/2/26\r\n" +
-                "----------------------------\r\n" +
-                "น้ำหนัก                  20 กก\r\n" +
-                "หัก                     3 กก\r\n" +
-                "คงเหลือ                 17 กก\r\n" +
-                "ราคา                   30 บาท\r\n" +
-                "----------------------------\r\n" +
-                "เป็นเงิน                 510 บาท\r\n\r\n\r\n";
+            byte[] imageBytes = ConvertBitmap(bmp);
 
-            byte[] textBytes = thai.GetBytes(receipt);
-            port.Write(textBytes, 0, textBytes.Length);
+            stream.Write(imageBytes);
+            byte[] feedAndCut = new byte[]
+            {
+    0x1B, 0x64, 0x03,   // Feed 3 lines
+    0x1D, 0x56, 0x00    // Full cut
+            };
 
-            // Underline ON
-            port.Write(new byte[] { 0x1B, 0x2D, 0x01 }, 0, 3);
-
-            byte[] moneyBytes = thai.GetBytes("510");
-            port.Write(moneyBytes, 0, moneyBytes.Length);
-
-            // Underline OFF
-            port.Write(new byte[] { 0x1B, 0x2D, 0x00 }, 0, 3);
-
-            byte[] bahtBytes = thai.GetBytes(" บาท\r\n\r\n\r\n");
-            port.Write(bahtBytes, 0, bahtBytes.Length);
-
-            // Auto Cut
-            byte[] cutCommand = new byte[] { 0x1D, 0x56, 0x00 };
-            port.Write(cutCommand, 0, cutCommand.Length);
+            stream.Write(feedAndCut, 0, feedAndCut.Length);
 
             port.Close();
 
-            return Ok("Printed successfully");
+            return Ok("Printed");
 
+        }
+        private void DrawLeftRight(
+    Graphics g,
+    System.Drawing.Font font,
+    string left,
+    string right,
+    int leftX,
+    int rightEdge,
+    int y)
+        {
+            g.DrawString(left, font, Brushes.Black, leftX, y);
+
+            SizeF size = g.MeasureString(right, font);
+
+            float rightX = rightEdge - size.Width;
+
+            g.DrawString(right, font, Brushes.Black, rightX, y);
+        }
+        private byte[] ConvertBitmap(Bitmap bmp)
+        {
+            int width = bmp.Width;
+            int height = bmp.Height;
+
+            List<byte> bytes = new List<byte>();
+
+            bytes.AddRange(new byte[] { 0x1B, 0x40 });
+            bytes.AddRange(new byte[] { 0x1B, 0x33, 24 });
+            for (int y = 0; y < height; y += 24)
+            {
+                bytes.AddRange(new byte[]
+                {
+                    0x1B,0x2A,33,
+                    (byte)(width % 256),
+                    (byte)(width / 256)
+                });
+
+                for (int x = 0; x < width; x++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        byte slice = 0;
+
+                        for (int b = 0; b < 8; b++)
+                        {
+                            int yy = y + k * 8 + b;
+
+                            if (yy >= height)
+                                continue;
+
+                            Color pixel = bmp.GetPixel(x, yy);
+
+                            int gray =
+    (pixel.R * 30 +
+     pixel.G * 59 +
+     pixel.B * 11) / 100;
+
+                            if (gray < 128)
+                                slice |= (byte)(1 << (7 - b));
+                        }
+
+                        bytes.Add(slice);
+                    }
+                }
+
+               
+               // bytes.AddRange(new byte[] { 0x1B, 0x4A, 0x00 });//imply new line 
+            }
+
+            return bytes.ToArray();
         }
     }
 }

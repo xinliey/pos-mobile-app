@@ -21,6 +21,20 @@ updated API address and connection works again.
 Successfully connected printer via Bluetooth COM port and enabled auto-cut command.
 Thermal printer prints Thai text as Chinese characters.
 
+2026/2/27
+Bug Encountered & fixed:
+Added bitmap-based receipt printing for Thai text support
+Implemented ESC/POS image conversion pipeline
+Improved receipt layout with aligned columns
+Tuned spacing for 58mm thermal paper
+Fixed image banding artifacts during printing
+Reduced excessive paper feed before cutting
+Enabled automatic paper cutting after print
+Fixed truncated prints by increasing bitmap height
+Resolved intermittent COM port timeout errors
+
 Next Steps : 
-encoding problem still under investigation.
-billing format design
+Enable frontend-to-backend data submission
+Implement backend data reception and validation
+Add temporary storage for submitted records
+Build report generation from collected entries
