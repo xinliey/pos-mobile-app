@@ -5,10 +5,78 @@
 
     <ScrollView>
         <VerticalStackLayout>
+            
+            <Label 
+                Text="บิลขี้ยาง"
+                FontSize="30"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Margin="0,30"
+                />
+            
+            <!-- Name -->
+            <Label
+                Text="ชื่อ"
+                FontSize="25"
+                />
+            <Entry 
+            x:Name="NameInput"
+            Placeholder="Enter Name"
+                />
+
+            <!-- weight -->
+            <Label
+    Text="น้ำหนัก"
+    FontSize="25"/>
+            <Entry 
+x:Name="WeightInput"
+Placeholder="Enter weight"
+                Keyboard="Numeric"/>
+            <!-- bucket -->
+            <Label
+    Text="หักถัง/เข่ง"
+    FontSize="25"/>
+            <Entry 
+x:Name="BucketInput"
+Placeholder="Enter weight" 
+                Keyboard="Numeric"/>
+            <!-- deduct-->
+            <Label
+    Text="หัก"
+    FontSize="25"/>
+            <Entry 
+x:Name="DeductInput"
+Placeholder="Enter weight" 
+                Keyboard="Numeric"/>
+            
+            <!-- Component Selection -->
+            <Picker 
+            x:Name="TypePicker"
+            Title="ชนิดขี้ยาง"
+                FontSize="25"
+                Margin="0,10"
+                SelectedIndexChanged="OnCategoryChanged">
+                <Picker.Items>
+                    <x:String>จอก</x:String>
+                    <x:String>ก้อน</x:String>
+                    <x:String>เส้น</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker 
+    x:Name="ColorPicker"
+    Title="ระดับความแห้ง"
+                FontSize="25"
+                SelectedIndexChanged="ColorPicker_SelectedIndexChanged"/>
+
+            <!-- save -->
             <Button
-    x:Name="CounterBtn"
-    Text="print"
-    Clicked="OnCounterClicked" />
+                x:Name="CounterBtn"
+                Text="ปริ้น"
+                FontSize="20"         
+                Clicked="OnCounterClicked" />
+            
+            
         </VerticalStackLayout>
     </ScrollView>
 

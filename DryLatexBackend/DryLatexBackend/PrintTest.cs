@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -12,9 +13,16 @@ namespace DryLatexBackend.Controllers
     [Route("api/[controller]")]
     public class PrintController : ControllerBase
     {
+        int netweight;
+        int totalcost;
+        decimal netWeight;
+        int price;
+        decimal total;
         [HttpPost]
-        public IActionResult Print()
+
+        public IActionResult Print([FromBody] PrintRequest request)
         {
+            calculatemoney(request.Weight, request.Bucket, request.Deduct);
             Bitmap bmp = new Bitmap(384, 650);
             Graphics g = Graphics.FromImage(bmp);
 
@@ -29,34 +37,34 @@ namespace DryLatexBackend.Controllers
             g.DrawString("ร้านเกสรคลองแงะ", titleFont, Brushes.Black, leftX, y);
             y += 60;
 
-            g.DrawString("ชื่อ: สมชาย", font, Brushes.Black, leftX, y);
+            g.DrawString($"ชื่อ: {request.Name}", font, Brushes.Black, leftX, y);
             y += 40;
 
-            g.DrawString("วันที่: 2026/2/26", font, Brushes.Black, leftX, y);
+            g.DrawString($"วันที่: {DateTime.Now:dd/mm/yyyy}", font, Brushes.Black, leftX, y);
             y += 40;
 
             g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "น้ำหนัก", "20 กก", leftX, rightX, y);
+            DrawLeftRight(g, font, "น้ำหนัก", $"{request.Weight} กก", leftX, rightX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "เข่ง", "0 กก", leftX, rightX, y);
+            DrawLeftRight(g, font, "เข่ง", $"{request.Bucket} กก", leftX, rightX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "หัก", "3 กก", leftX, rightX, y);
+            DrawLeftRight(g, font, "หัก", $"{request.Deduct} กก", leftX, rightX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "คงเหลือ", "17 กก", leftX, rightX, y);
+            DrawLeftRight(g, font, "คงเหลือ", $"{netWeight} กก", leftX, rightX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "ราคา", "30 บ.", leftX, rightX, y);
+            DrawLeftRight(g, font, "ราคา", $"{price} บ.", leftX, rightX, y);
             y += 40;
 
             g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
             y += 50;
 
-            DrawLeftRight(g, titleFont, "เป็นเงิน", "510 บาท", leftX, rightX, y);
+            DrawLeftRight(g, titleFont, "เป็นเงิน", $"{total} บาท", leftX, rightX, y);
             y += 60;
             Console.WriteLine("Final Y = " + y);
             SerialPort port = new SerialPort("COM3", 9600);
@@ -77,7 +85,7 @@ namespace DryLatexBackend.Controllers
 
             port.Close();
 
-            return Ok("Printed");
+            return Ok("ปริ้นสำเร็จ");
 
         }
         private void DrawLeftRight(
@@ -97,6 +105,7 @@ namespace DryLatexBackend.Controllers
 
             g.DrawString(right, font, Brushes.Black, rightX, y);
         }
+
         private byte[] ConvertBitmap(Bitmap bmp)
         {
             int width = bmp.Width;
@@ -143,11 +152,27 @@ namespace DryLatexBackend.Controllers
                     }
                 }
 
-               
-               // bytes.AddRange(new byte[] { 0x1B, 0x4A, 0x00 });//imply new line 
+
+                // bytes.AddRange(new byte[] { 0x1B, 0x4A, 0x00 });//imply new line 
             }
 
             return bytes.ToArray();
+        }
+
+        private void calculatemoney(string W, string b, string d)
+        {
+
+            decimal weight = 0;
+            decimal bucket = 0;
+            decimal deduct = 0;
+        
+            decimal.TryParse(W, out weight);
+            decimal.TryParse(b, out bucket);
+            decimal.TryParse(d, out deduct);
+          
+
+            netWeight = weight - (bucket + deduct);
+            total = netWeight * price;
         }
     }
 }

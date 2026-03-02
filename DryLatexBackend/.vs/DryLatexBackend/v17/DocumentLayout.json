@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\printtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\printrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\printrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\drylatexbackend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\drylatexbackend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|solutionrelative:drylatexbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8016B18A-C293-4F06-B685-4CE3A561F7D5}|DryLatexBackend\\DryLatexBackend.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexbackend\\drylatexbackend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 581,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,13 +42,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PrintRequest.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintRequest.cs",
+              "RelativeDocumentMoniker": "DryLatexBackend\\PrintRequest.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintRequest.cs",
+              "RelativeToolTip": "DryLatexBackend\\PrintRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T08:49:21.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PrintTest.cs",
               "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\PrintTest.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
               "RelativeToolTip": "DryLatexBackend\\PrintTest.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAD4vzQAAAAxAAAA",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAgwLIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T06:50:29.657Z",
               "EditorCaption": ""
@@ -64,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "WeatherForecast.cs",
               "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\WeatherForecast.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\WeatherForecast.cs",
@@ -72,18 +89,17 @@
               "RelativeToolTip": "DryLatexBackend\\WeatherForecast.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-23T07:12:20.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-23T07:12:20.929Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Program.cs",
               "RelativeDocumentMoniker": "DryLatexBackend\\Program.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\Program.cs",
               "RelativeToolTip": "DryLatexBackend\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAArAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T07:08:02.513Z",
               "EditorCaption": ""
