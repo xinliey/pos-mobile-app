@@ -12,7 +12,14 @@ namespace DryLatexApp
         {
             InitializeComponent();
         }
-    
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await Navigation.PushModalAsync(new SetPricePage());
+        }
+
         private async void OnCounterClicked(object sender, EventArgs e)
         {
             string name = NameInput.Text;

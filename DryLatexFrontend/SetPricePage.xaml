@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DryLatexApp.SetPricePage"
+             Title="SetPricePage">
+
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <Label 
+           Text="ราคาขี้ยางวันนี้"
+               FontSize="28"
+               HorizontalOptions="Center" />
+          <!-- Category Picker -->
+        <Picker x:Name="TypePicker"
+                Title="Select Category"
+                SelectedIndexChanged="OnCategoryChanged">
+            <Picker.Items>
+                <x:String>จอก</x:String>
+                <x:String>ก้อน</x:String>
+                <x:String>เส้น</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!-- Color Picker -->
+        <Picker x:Name="ColorPicker"
+                Title="Select Color" />
+
+      
+        <!--adding price -->
+        <Label
+    Text="Price"
+    FontSize="25"/>
+        <Entry 
+x:Name="PriceInput"
+Placeholder="Enter Price" 
+                Keyboard="Numeric"/>
+      
+        <Button
+    x:Name="SavePriceBtn"
+    Text="ปริ้น"
+    FontSize="20"         
+    Clicked="SavePriceBtn_Clicked" />
+    </VerticalStackLayout>
+</ContentPage>

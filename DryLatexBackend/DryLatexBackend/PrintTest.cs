@@ -13,16 +13,53 @@ namespace DryLatexBackend.Controllers
     [Route("api/[controller]")]
     public class PrintController : ControllerBase
     {
-        int netweight;
-        int totalcost;
+        public PrintController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+      
         decimal netWeight;
-        int price;
-        decimal total;
-        [HttpPost]
+        
+        decimal total; 
+        private readonly IConfiguration _configuration;
 
+        [HttpPost("set-price")]
+        public IActionResult SetPrice([FromBody] PriceRequest request)
+        {
+            if (!DailyPriceStore.Prices.ContainsKey(request.Category))
+                DailyPriceStore.Prices[request.Category] = new Dictionary<string, decimal>();
+
+            DailyPriceStore.Prices[request.Category][request.Color] = request.Price;
+
+            DailyPriceStore.IsPriceSet = true;
+
+            return Ok("Price updated.");
+        }
+
+        [HttpPost("end-day")]
+        public IActionResult EndDay()
+        {
+            DailyPriceStore.Prices.Clear();
+            DailyPriceStore.IsPriceSet = false;
+
+            return Ok("Day closed.");
+        }
+
+        [HttpPost]
         public IActionResult Print([FromBody] PrintRequest request)
         {
-            calculatemoney(request.Weight, request.Bucket, request.Deduct);
+            if (!DailyPriceStore.IsPriceSet)
+            {
+                return BadRequest("Price not set for today.");
+            }
+            if (!DailyPriceStore.Prices.ContainsKey(request.Category) ||
+            !DailyPriceStore.Prices[request.Category].ContainsKey(request.Color))
+            {
+                return BadRequest("Price not found for selected category/color.");
+            }
+
+            var price = DailyPriceStore.Prices[request.Category][request.Color];
+            calculatemoney(request.Weight, request.Bucket, request.Deduct,price);
             Bitmap bmp = new Bitmap(384, 650);
             Graphics g = Graphics.FromImage(bmp);
 
@@ -40,7 +77,7 @@ namespace DryLatexBackend.Controllers
             g.DrawString($"ชื่อ: {request.Name}", font, Brushes.Black, leftX, y);
             y += 40;
 
-            g.DrawString($"วันที่: {DateTime.Now:dd/mm/yyyy}", font, Brushes.Black, leftX, y);
+            g.DrawString($"วันที่: {DateTime.Now:dd/MM/yyyy}", font, Brushes.Black, leftX, y);
             y += 40;
 
             g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
@@ -159,7 +196,7 @@ namespace DryLatexBackend.Controllers
             return bytes.ToArray();
         }
 
-        private void calculatemoney(string W, string b, string d)
+        private void calculatemoney(string W, string b, string d, decimal price)
         {
 
             decimal weight = 0;
@@ -173,6 +210,7 @@ namespace DryLatexBackend.Controllers
 
             netWeight = weight - (bucket + deduct);
             total = netWeight * price;
+           
         }
     }
 }
