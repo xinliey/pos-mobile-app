@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DryLatexApp
 {
@@ -13,12 +14,6 @@ namespace DryLatexApp
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            await Navigation.PushModalAsync(new SetPricePage());
-        }
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
@@ -26,49 +21,51 @@ namespace DryLatexApp
             string weightText = WeightInput.Text;
             string bucketText = BucketInput.Text;
             string deductText = DeductInput.Text;
-
+            string priceText = PriceInput.Text;
             // Default name if empty
             if (string.IsNullOrWhiteSpace(name))
             {
                 name = "ลูกค้า";
             }
+            
 
-            // Validate weight
-            if (!double.TryParse(weightText, out double weight))
+            if (string.IsNullOrWhiteSpace(bucketText))
+            {
+                bucketText = "0";
+               
+            }
+
+            if (string.IsNullOrWhiteSpace(weightText))
             {
                 await DisplayAlert("Error", "กรุณากรอกน้ำหนักให้ถูกต้อง", "OK");
                 return;
             }
 
             // Validate deduct
-            if (!double.TryParse(deductText, out double deduct))
+
+
+
+            if (string.IsNullOrWhiteSpace(deductText))
             {
-                await DisplayAlert("Error", "กรุณากรอกค่าหักให้ถูกต้อง", "OK");
+                await DisplayAlert("Error", "กรุณากรอกหักน้ำให้ถูกต้อง", "OK");
                 return;
             }
 
-            // Validate category
-            if (string.IsNullOrWhiteSpace(selectedCategory))
+
+            if (string.IsNullOrWhiteSpace(priceText))
             {
-                await DisplayAlert("Error", "กรุณาเลือกชนิดขี้ยาง", "OK");
+                await DisplayAlert("Error", "กรุณากรอกราคาให้ถูกต้อง", "OK");
                 return;
             }
 
-            // Validate color
-            if (string.IsNullOrWhiteSpace(color))
-            {
-                await DisplayAlert("Error", "กรุณาเลือกระดับความแห้ง", "OK");
-                return;
-            }
-           //after data confirmation 
+            //after data confirmation 
             var data = new
             {
                 Name = name,
-                Weight = weight,
+                Weight = weightText,
                 Bucket = bucketText,
-                Deduct = deduct,
-                Category = selectedCategory,
-                Color = color
+                Deduct = deductText,
+                Price = priceText
             };
 
             try
@@ -87,7 +84,7 @@ namespace DryLatexApp
 
                 if (response.IsSuccessStatusCode)
                 {
-                    
+
                     await DisplayAlert("Server Response", result, "OK");
                 }
                 else
@@ -122,30 +119,31 @@ namespace DryLatexApp
                 await DisplayAlert("Error", ex.ToString(), "OK");
             }*/
         }
-        private void OnCategoryChanged(object sender, EventArgs e)
-        {
-            if (TypePicker.SelectedIndex == -1)
-                return;
-             selectedCategory= TypePicker.SelectedItem?.ToString();
-           
-            ColorPicker.Items.Clear();
-            ColorPicker.SelectedIndex = -1;
-            if (selectedCategory == "จอก" || selectedCategory == "ก้อน")
-            {
-                ColorPicker.Items.Add("ขาว");
-                ColorPicker.Items.Add("แห้ง");
-                ColorPicker.Items.Add("เหลือง");
-            }
-            else if (selectedCategory == "เส้น")
-            {
-                ColorPicker.Items.Add("ขาว");
-                ColorPicker.Items.Add("แห้ง");
-            }
-        }
 
-        private void ColorPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private async void SumBtn_Clicked(object sender, EventArgs e)
         {
-            color = ColorPicker.SelectedItem?.ToString();
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var response = await client.PostAsync(
+                    "http://192.168.1.147:5205/api/Print/end-day",
+                    null);
+                string result = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Success", "summarize is being printed", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Status: {response.StatusCode}\n\n{result}", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.ToString(), "OK");
+            }
         }
     }
 

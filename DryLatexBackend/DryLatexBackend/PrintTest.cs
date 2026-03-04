@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using Microsoft.VisualBasic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -23,44 +24,40 @@ namespace DryLatexBackend.Controllers
         decimal total; 
         private readonly IConfiguration _configuration;
 
-        [HttpPost("set-price")]
-        public IActionResult SetPrice([FromBody] PriceRequest request)
-        {
-            if (!DailyPriceStore.Prices.ContainsKey(request.Category))
-                DailyPriceStore.Prices[request.Category] = new Dictionary<string, decimal>();
-
-            DailyPriceStore.Prices[request.Category][request.Color] = request.Price;
-
-            DailyPriceStore.IsPriceSet = true;
-
-            return Ok("Price updated.");
-        }
 
         [HttpPost("end-day")]
         public IActionResult EndDay()
         {
-            DailyPriceStore.Prices.Clear();
-            DailyPriceStore.IsPriceSet = false;
 
-            return Ok("Day closed.");
+           
+                return Ok("Day closed.");
         }
 
         [HttpPost]
         public IActionResult Print([FromBody] PrintRequest request)
         {
-            if (!DailyPriceStore.IsPriceSet)
+            calculatemoney(request.Weight, request.Bucket, request.Deduct, request.Price);
+            string connString =
+               "Server=localhost;" +
+               "Database=latexapp;" +
+               "User ID=root;" +
+               "Password=131001;";
+            string sql = @"INSERT INTO latexapp.drylatexsum (CustomerName, TotalWeight, TotalAmount)
+            VALUES (@Name,@weight,@total);";
+
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(sql, conn))
             {
-                return BadRequest("Price not set for today.");
-            }
-            if (!DailyPriceStore.Prices.ContainsKey(request.Category) ||
-            !DailyPriceStore.Prices[request.Category].ContainsKey(request.Color))
-            {
-                return BadRequest("Price not found for selected category/color.");
+                cmd.Parameters.AddWithValue("@Name", request.Name);
+                cmd.Parameters.AddWithValue("@weight",netWeight);
+                cmd.Parameters.AddWithValue("@total", total);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
 
-            var price = DailyPriceStore.Prices[request.Category][request.Color];
-            calculatemoney(request.Weight, request.Bucket, request.Deduct,price);
-            Bitmap bmp = new Bitmap(384, 650);
+
+                Bitmap bmp = new Bitmap(384, 650);
             Graphics g = Graphics.FromImage(bmp);
 
             g.Clear(Color.White);
@@ -95,7 +92,7 @@ namespace DryLatexBackend.Controllers
             DrawLeftRight(g, font, "คงเหลือ", $"{netWeight} กก", leftX, rightX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "ราคา", $"{price} บ.", leftX, rightX, y);
+            DrawLeftRight(g, font, "ราคา", $"{request.Price} บ.", leftX, rightX, y);
             y += 40;
 
             g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
@@ -196,16 +193,18 @@ namespace DryLatexBackend.Controllers
             return bytes.ToArray();
         }
 
-        private void calculatemoney(string W, string b, string d, decimal price)
+        private void calculatemoney(string W, string b, string d, string p)
         {
 
             decimal weight = 0;
             decimal bucket = 0;
             decimal deduct = 0;
+            decimal price = 0;
         
             decimal.TryParse(W, out weight);
             decimal.TryParse(b, out bucket);
             decimal.TryParse(d, out deduct);
+            decimal.TryParse(p, out price);
           
 
             netWeight = weight - (bucket + deduct);

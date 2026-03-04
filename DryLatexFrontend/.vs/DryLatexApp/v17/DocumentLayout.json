@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\setpricepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:setpricepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\setpricepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:setpricepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\pricerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:pricerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,19 +18,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SetPricePage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\SetPricePage.xaml.cs",
-              "RelativeDocumentMoniker": "SetPricePage.xaml.cs",
-              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\SetPricePage.xaml.cs",
-              "RelativeToolTip": "SetPricePage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T09:07:41.302Z",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MainPage.xaml",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
+              "RelativeToolTip": "MainPage.xaml",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAEwAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-03T08:55:49.873Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -55,54 +44,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SetPricePage.xaml",
-              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\SetPricePage.xaml",
-              "RelativeDocumentMoniker": "SetPricePage.xaml",
-              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\SetPricePage.xaml",
-              "RelativeToolTip": "SetPricePage.xaml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-03T09:03:35.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainPage.xaml.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml.cs",
               "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAYwGIAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T08:57:04.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PriceRequest.cs",
-              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\PriceRequest.cs",
-              "RelativeDocumentMoniker": "PriceRequest.cs",
-              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\PriceRequest.cs",
-              "RelativeToolTip": "PriceRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T08:56:26.47Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
-              "RelativeToolTip": "MainPage.xaml",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAEkAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-03T08:55:49.873Z",
               "EditorCaption": ""
             }
           ]
