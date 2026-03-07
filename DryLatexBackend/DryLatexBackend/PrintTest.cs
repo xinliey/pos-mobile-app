@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DryLatexBackend.Controllers
 {
@@ -28,10 +29,41 @@ namespace DryLatexBackend.Controllers
         [HttpPost("end-day")]
         public IActionResult EndDay()
         {
+            string connString =
+               "Server=localhost;" +
+               "Database=latexapp;" +
+               "User ID=root;" +
+               "Password=131001;";
+            string sum = @"SELECT sum(TotalWeight) as weight ,sum(TotalAmount) as cost  FROM latexapp.drylatexsum WHERE DATE(CreatedAt) = CURDATE();";
+            string totalweight="";
+            string totalcost = "";
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(sum, conn))
+            {
+               
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        totalweight = reader["weight"].ToString();
+                        totalcost = reader["cost"].ToString();
+                        return Ok(new //send response of data as json 
+                        {
+                            totalWeight = totalweight,
+                            totalCost = totalcost
+                        });
+                    }
+                    else
+                    {
 
-           
-                return Ok("Day closed.");
+                        return Ok("ไม่มีข้อมูล");
+                    }
+                }
+            }
+         
         }
+        
 
         [HttpPost]
         public IActionResult Print([FromBody] PrintRequest request)
@@ -54,6 +86,7 @@ namespace DryLatexBackend.Controllers
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
+
             }
 
 

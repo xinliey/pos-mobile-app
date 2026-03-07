@@ -129,11 +129,11 @@ namespace DryLatexApp
                 var response = await client.PostAsync(
                     "http://192.168.1.147:5205/api/Print/end-day",
                     null);
-                string result = await response.Content.ReadAsStringAsync();
+                string result = await response.Content.ReadAsStringAsync(); //receiving response from backend 
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Success", "summarize is being printed", "OK");
+                    await DisplayAlert("Result", result, "OK"); //display response 
                 }
                 else
                 {
