@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DryLatexApp.EditList"
+             Title="แก้ไขบิล"> 
+ 
+    <CollectionView x:Name="BillCollection"
+                    SelectionMode="Single"
+                    SelectionChanged="BillCollection_SelectionChanged">
+   
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Margin="10" Padding="10" BorderColor="Gray">
+                    <VerticalStackLayout>
+                       
+                            <Label Text="{Binding Name}" FontSize="Medium"/>
+                        <HorizontalStackLayout>
+                            <Label Text="น้ำหนัก      :" />
+                            <Label Text="{Binding TotalWeight}" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="ราคา         :     "/>
+                            <Label Text="{Binding Price}" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="ทั้งหมด       :     "/>
+                            <Label Text="{Binding Total}" />
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+</ContentPage>

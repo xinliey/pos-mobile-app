@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\editpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:editpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\editpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:editpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\editlist.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:editlist.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\editlist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:editlist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|c:\\users\\xinxi\\desktop\\pos-mobile-app\\drylatexfrontend\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62167D2C-83AA-4FF6-B426-838801B0DDC3}|DryLatexApp.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +38,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
-              "RelativeToolTip": "MainPage.xaml",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAAEwAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-03T08:55:49.873Z",
+              "DocumentIndex": 5,
+              "Title": "Bill.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\Bill.cs",
+              "RelativeDocumentMoniker": "Bill.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\Bill.cs",
+              "RelativeToolTip": "Bill.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T02:17:44.706Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -48,15 +68,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "EditList.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditList.xaml.cs",
+              "RelativeDocumentMoniker": "EditList.xaml.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditList.xaml.cs",
+              "RelativeToolTip": "EditList.xaml.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T07:53:52.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainPage.xaml.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml.cs",
               "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAYwHoAAABFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T08:57:04.909Z",
+              "WhenOpened": "2026-03-09T06:31:43.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MainPage.xaml",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\MainPage.xaml",
+              "RelativeToolTip": "MainPage.xaml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-09T02:43:30.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EditPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditPage.xaml.cs",
+              "RelativeDocumentMoniker": "EditPage.xaml.cs",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditPage.xaml.cs",
+              "RelativeToolTip": "EditPage.xaml.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAAAGYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T01:25:25.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditPage.xaml",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditPage.xaml",
+              "RelativeDocumentMoniker": "EditPage.xaml",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditPage.xaml",
+              "RelativeToolTip": "EditPage.xaml",
+              "ViewState": "AQIAADoAAAAAAAAAAAAUwFMAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-09T01:25:20.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditList.xaml",
+              "DocumentMoniker": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditList.xaml",
+              "RelativeDocumentMoniker": "EditList.xaml",
+              "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexFrontend\\EditList.xaml",
+              "RelativeToolTip": "EditList.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-09T01:17:03.059Z",
               "EditorCaption": ""
             }
           ]

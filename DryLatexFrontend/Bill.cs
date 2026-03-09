@@ -1,6 +1,6 @@
-﻿namespace DryLatexBackend
+﻿namespace DryLatexApp
 {
-    public class PrintRequest
+    public class Bill
     {
         public int Id { get; set; }
         public string Name { get; set; }

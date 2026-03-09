@@ -145,6 +145,12 @@ namespace DryLatexApp
                 await DisplayAlert("Error", ex.ToString(), "OK");
             }
         }
+
+        private async void EditBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditList());
+        }
     }
+    
 
 }

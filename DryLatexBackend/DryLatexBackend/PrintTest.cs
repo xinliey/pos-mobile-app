@@ -8,6 +8,8 @@ using System.IO.Ports;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Org.BouncyCastle.Asn1.Ocsp;
+using System.Xml.Linq;
 
 namespace DryLatexBackend.Controllers
 {
@@ -26,6 +28,62 @@ namespace DryLatexBackend.Controllers
         private readonly IConfiguration _configuration;
 
 
+        [HttpGet("GetBillList")]
+        public IActionResult GetBillList()
+        {
+            string connString =
+               "Server=localhost;" +
+               "Database=latexapp;" +
+               "User ID=root;" +
+               "Password=131001;";
+            string list = @"SELECT Id,CustomerName , totalweight,bucket,deduct,price ,TotalAmount FROM latexapp.drylatexsum where DATE(CreatedAt) = CURDATE();";
+            List<PrintRequest> bills = new List<PrintRequest>();
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(list, conn))
+            {
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PrintRequest bill = new PrintRequest
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Name = reader["CustomerName"].ToString(),
+                            TotalWeight = reader["totalweight"].ToString(),
+                            Bucket = reader["bucket"].ToString(),
+                            Deduct = reader["deduct"].ToString(),
+
+                            Price = reader["price"].ToString(),
+                           Total = reader["TotalAmount"].ToString()
+                        };
+                        bills.Add(bill);
+                    }
+                }
+               
+            } return Ok(bills);
+        }
+        [HttpPost("EditData")]
+        public IActionResult EditData([FromBody] PrintRequest request)
+        {
+            calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price);
+            UpdateDB(request.Id,request.Name,request.Price, request.Bucket, request.Deduct,request.TotalWeight);
+            string totalCostAfterUpdate = total.ToString();
+            return Ok(total);
+
+        }
+        [HttpPost("EditDataAndPrint")]
+        public IActionResult EditDataAndPrint([FromBody] PrintRequest request)
+        {
+            calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price);
+            UpdateDB(request.Id, request.Name, request.Price, request.Bucket, request.Deduct, request.TotalWeight);
+            string totalCostAfterUpdate = total.ToString();
+            Printing(request);
+            return Ok(total);
+
+        }
+
         [HttpPost("end-day")]
         public IActionResult EndDay()
         {
@@ -34,7 +92,7 @@ namespace DryLatexBackend.Controllers
                "Database=latexapp;" +
                "User ID=root;" +
                "Password=131001;";
-            string sum = @"SELECT sum(TotalWeight) as weight ,sum(TotalAmount) as cost  FROM latexapp.drylatexsum WHERE DATE(CreatedAt) = CURDATE();";
+            string sum = @"SELECT sum(NetWeight) as weight ,sum(TotalAmount) as cost  FROM latexapp.drylatexsum WHERE DATE(CreatedAt) = CURDATE();";
             string totalweight="";
             string totalcost = "";
             using (var conn = new MySqlConnection(connString))
@@ -68,29 +126,18 @@ namespace DryLatexBackend.Controllers
         [HttpPost]
         public IActionResult Print([FromBody] PrintRequest request)
         {
-            calculatemoney(request.Weight, request.Bucket, request.Deduct, request.Price);
-            string connString =
-               "Server=localhost;" +
-               "Database=latexapp;" +
-               "User ID=root;" +
-               "Password=131001;";
-            string sql = @"INSERT INTO latexapp.drylatexsum (CustomerName, TotalWeight, TotalAmount)
-            VALUES (@Name,@weight,@total);";
+            calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price);
 
-            using (var conn = new MySqlConnection(connString))
-            using (var cmd = new MySqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@Name", request.Name);
-                cmd.Parameters.AddWithValue("@weight",netWeight);
-                cmd.Parameters.AddWithValue("@total", total);
+            SaveNewToDB(request.Name, request.Price, request.Bucket, request.Deduct,request.TotalWeight); //the rest already exists in entire class 
+            Printing(request);
+              
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
+            return Ok("ปริ้นสำเร็จ");
 
-            }
-
-
-                Bitmap bmp = new Bitmap(384, 650);
+        }
+        private void Printing(PrintRequest request)
+        {
+            Bitmap bmp = new Bitmap(384, 650);
             Graphics g = Graphics.FromImage(bmp);
 
             g.Clear(Color.White);
@@ -113,7 +160,7 @@ namespace DryLatexBackend.Controllers
             g.DrawString("--------------------------------", font, Brushes.Black, leftX, y);
             y += 40;
 
-            DrawLeftRight(g, font, "น้ำหนัก", $"{request.Weight} กก", leftX, rightX, y);
+            DrawLeftRight(g, font, "น้ำหนัก", $"{request.TotalWeight} กก", leftX, rightX, y);
             y += 40;
 
             DrawLeftRight(g, font, "เข่ง", $"{request.Bucket} กก", leftX, rightX, y);
@@ -151,10 +198,8 @@ namespace DryLatexBackend.Controllers
             stream.Write(feedAndCut, 0, feedAndCut.Length);
 
             port.Close();
-
-            return Ok("ปริ้นสำเร็จ");
-
         }
+
         private void DrawLeftRight(
     Graphics g,
     System.Drawing.Font font,
@@ -243,6 +288,56 @@ namespace DryLatexBackend.Controllers
             netWeight = weight - (bucket + deduct);
             total = netWeight * price;
            
+        }
+        private void SaveNewToDB(string name,string price,string bucket,string deduct,string totalweight)
+        {//save new data , id will be automized
+            string connString =
+             "Server=localhost;" +
+             "Database=latexapp;" +
+             "User ID=root;" +
+             "Password=131001;";
+            string sql = @"INSERT INTO latexapp.drylatexsum (CustomerName,totalweight,bucket ,deduct, NetWeight,price, TotalAmount)
+            VALUES (@Name,@totalweight,@bucket,@deduct,@weight,@price,@total);";
+
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@totalweight", totalweight);
+                cmd.Parameters.AddWithValue("@bucket", bucket); 
+                cmd.Parameters.AddWithValue("@deduct", deduct);
+                cmd.Parameters.AddWithValue("@weight", netWeight);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@total", total);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        private void UpdateDB(int id, string name , string price, string bucket, string deduct,string totalweight)
+        {
+            string connString =
+            "Server=localhost;" +
+            "Database=latexapp;" +
+            "User ID=root;" +
+            "Password=131001;";
+            string sql = @"Update latexapp.drylatexsum SET CustomerName = @Name, totalweight = @totalweight,bucket = @bucket, deduct=@deduct,NetWeight=@weight ,price = @price,TotalAmount = @total WHERE Id = @Id;";
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@totalweight", totalweight);
+                cmd.Parameters.AddWithValue("@bucket", bucket);
+                cmd.Parameters.AddWithValue("@deduct", deduct);
+                cmd.Parameters.AddWithValue("@weight", netWeight);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@total", total);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
