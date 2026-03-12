@@ -127,9 +127,9 @@ namespace DryLatexBackend.Controllers
         public IActionResult Print([FromBody] PrintRequest request)
         {
             calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price);
-
-            SaveNewToDB(request.Name, request.Price, request.Bucket, request.Deduct,request.TotalWeight); //the rest already exists in entire class 
             Printing(request);
+            SaveNewToDB(request.Name, request.Price, request.Bucket, request.Deduct,request.TotalWeight); //the rest already exists in entire class 
+           
               
 
             return Ok("ปริ้นสำเร็จ");
@@ -148,7 +148,7 @@ namespace DryLatexBackend.Controllers
             int rightX = 390;
             int y = 0;
 
-            g.DrawString("ร้านเกสรคลองแงะ", titleFont, Brushes.Black, leftX, y);
+            g.DrawString("ร้านเกษรคลองแงะ", titleFont, Brushes.Black, leftX, y);
             y += 60;
 
             g.DrawString($"ชื่อ: {request.Name}", font, Brushes.Black, leftX, y);

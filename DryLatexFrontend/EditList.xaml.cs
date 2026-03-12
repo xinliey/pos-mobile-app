@@ -10,6 +10,11 @@ public partial class EditList : ContentPage
 		InitializeComponent();
         LoadBills();
 	}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        LoadBills();
+    }
     private async void LoadBills()
     {
         HttpClient client = new HttpClient();
@@ -34,5 +39,6 @@ public partial class EditList : ContentPage
             return;
 
         await Navigation.PushAsync(new EditPage(selectedBill));
+        BillCollection.SelectedItem = null; //reset the index so the same index can be selected 
     }
 }

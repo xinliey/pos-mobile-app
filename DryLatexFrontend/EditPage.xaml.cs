@@ -98,7 +98,7 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response", result, "OK");
+                await DisplayAlert("Server Response","??????????????????????????", "OK");
                 TotalInput.Text = result;
             }
             else
@@ -183,7 +183,7 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response", result, "OK");
+                await DisplayAlert("Server Response", "??????????????????????????", "OK");
                 TotalInput.Text = result;
             }
             else

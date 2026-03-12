@@ -35,7 +35,7 @@ namespace DryLatexApp
                
             }
 
-            if (string.IsNullOrWhiteSpace(weightText))
+            if (!double.TryParse(weightText, out double weight))
             {
                 await DisplayAlert("Error", "กรุณากรอกน้ำหนักให้ถูกต้อง", "OK");
                 return;
@@ -45,14 +45,14 @@ namespace DryLatexApp
 
 
 
-            if (string.IsNullOrWhiteSpace(deductText))
+            if (!double.TryParse(deductText, out double deduct))
             {
                 await DisplayAlert("Error", "กรุณากรอกหักน้ำให้ถูกต้อง", "OK");
                 return;
             }
 
 
-            if (string.IsNullOrWhiteSpace(priceText))
+            if (!double.TryParse(priceText, out double price))
             {
                 await DisplayAlert("Error", "กรุณากรอกราคาให้ถูกต้อง", "OK");
                 return;
@@ -62,10 +62,12 @@ namespace DryLatexApp
             var data = new
             {
                 Name = name,
-                Weight = weightText,
+                TotalWeight = weight.ToString(),
                 Bucket = bucketText,
-                Deduct = deductText,
-                Price = priceText
+                Deduct = deduct.ToString(),
+                Price = price.ToString(),
+                Total = ""
+
             };
 
             try
@@ -96,6 +98,8 @@ namespace DryLatexApp
             {
                 await DisplayAlert("Error", ex.ToString(), "OK");
             }
+            ResetPage(); //reset the whole page blank after save data 
+
             /*try
             {
                 HttpClient client = new HttpClient();
@@ -149,6 +153,15 @@ namespace DryLatexApp
         private async void EditBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditList());
+        }
+        private void ResetPage()
+        {
+            NameInput.Text = null;
+            WeightInput.Text = null;
+            BucketInput.Text = null;
+            DeductInput.Text = null;
+            PriceInput.Text = null;
+
         }
     }
     

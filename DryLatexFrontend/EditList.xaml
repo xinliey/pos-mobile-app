@@ -14,16 +14,16 @@
                     <VerticalStackLayout>
                        
                             <Label Text="{Binding Name}" FontSize="Medium"/>
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing=" 20">
                             <Label Text="น้ำหนัก      :" />
                             <Label Text="{Binding TotalWeight}" />
                         </HorizontalStackLayout>
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
                             <Label Text="ราคา         :     "/>
                             <Label Text="{Binding Price}" />
                         </HorizontalStackLayout>
-                        <HorizontalStackLayout>
-                            <Label Text="ทั้งหมด       :     "/>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="ทั้งหมด      :     "/>
                             <Label Text="{Binding Total}" />
                         </HorizontalStackLayout>
 
