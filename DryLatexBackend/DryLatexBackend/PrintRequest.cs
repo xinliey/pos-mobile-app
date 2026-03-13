@@ -10,6 +10,8 @@
         public string Deduct { get; set; }
         public string Price { get; set; }
         public string Total { get; set; }
+        public string Divide { get; set; }
+        public int Type { get; set; }
       
     }
 }

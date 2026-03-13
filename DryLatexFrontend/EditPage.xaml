@@ -71,6 +71,17 @@ x:Name="PriceInput"
             <Entry 
 x:Name="TotalInput"/>
 
+            <!-- Component Selection -->
+            <Picker 
+   x:Name="Dividened"
+   Title="รูปแบบบิล"
+       FontSize="25">
+                <Picker.Items>
+                    <x:String>ไม่แบ่ง</x:String>
+                    <x:String>6/4</x:String>
+                    <x:String>5/5</x:String>
+                </Picker.Items>
+            </Picker>
             <!--save and print btn-->
             <Button
                 x:Name="saveprintbtn"

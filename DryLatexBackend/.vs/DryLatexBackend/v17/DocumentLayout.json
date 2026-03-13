@@ -46,7 +46,8 @@
               "RelativeToolTip": "DryLatexBackend\\DailyPriceStore.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T08:41:21.857Z"
+              "WhenOpened": "2026-03-03T08:41:21.857Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -56,9 +57,10 @@
               "RelativeDocumentMoniker": "DryLatexBackend\\PrintRequest.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintRequest.cs",
               "RelativeToolTip": "DryLatexBackend\\PrintRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T08:49:21.659Z"
+              "WhenOpened": "2026-03-02T08:49:21.659Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -68,7 +70,7 @@
               "RelativeDocumentMoniker": "DryLatexBackend\\PrintTest.cs",
               "ToolTip": "C:\\Users\\xinxi\\Desktop\\pos-mobile-app\\DryLatexBackend\\DryLatexBackend\\PrintTest.cs",
               "RelativeToolTip": "DryLatexBackend\\PrintTest.cs",
-              "ViewState": "AQIAAIcAAAAAAAAAAAASwJYAAAAhAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAiwCYAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T06:50:29.657Z",
               "EditorCaption": ""

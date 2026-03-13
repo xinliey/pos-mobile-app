@@ -5,7 +5,17 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="20">
-
+            <!-- Component Selection -->
+            <Picker 
+x:Name="LatexType"
+Title="รูปแบบยาง"
+    FontSize="25"
+                SelectedIndex="0">
+                <Picker.Items>
+                    <x:String>ขี้ยาง</x:String>
+                    <x:String>ยางแผ่น</x:String>
+                </Picker.Items>
+            </Picker>
             <Label 
                 Text="บิลขี้ยาง"
                 FontSize="30"
@@ -85,7 +95,19 @@ Placeholder="Enter Price"
                 WidthRequest="600"
                 Keyboard="Numeric"/>
             </HorizontalStackLayout>
-     
+            <!-- Component Selection -->
+            <Picker 
+            x:Name="Dividened"
+            Title="รูปแบบบิล"
+                FontSize="25"
+                SelectedIndex="0">
+                <Picker.Items>
+                    <x:String>ไม่แบ่ง</x:String>
+                    <x:String>6/4</x:String>
+                    <x:String>5/5</x:String>
+                </Picker.Items>
+            </Picker>
+
 
             <!-- save -->
             <Button

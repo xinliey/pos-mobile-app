@@ -17,17 +17,30 @@ namespace DryLatexApp
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
+            int isSheet = 0;
             string name = NameInput.Text;
             string weightText = WeightInput.Text;
             string bucketText = BucketInput.Text;
             string deductText = DeductInput.Text;
             string priceText = PriceInput.Text;
+            string divideText = Dividened.SelectedIndex.ToString();
+            string typeText = LatexType.SelectedIndex.ToString();
             // Default name if empty
+
+            if (typeText == "ยางแผ่น")
+            {
+                //change from default
+                isSheet = 1;
+            }
             if (string.IsNullOrWhiteSpace(name))
             {
                 name = "ลูกค้า";
             }
-            
+            if (string.IsNullOrWhiteSpace(divideText))
+            {
+                divideText = "ไม่แบ่ง"; //set default to no dividened 
+            }
+
 
             if (string.IsNullOrWhiteSpace(bucketText))
             {
@@ -66,8 +79,9 @@ namespace DryLatexApp
                 Bucket = bucketText,
                 Deduct = deduct.ToString(),
                 Price = price.ToString(),
-                Total = ""
-
+                Total = "",
+                Divide = divideText,
+                Type = isSheet
             };
 
             try
@@ -156,6 +170,7 @@ namespace DryLatexApp
         }
         private void ResetPage()
         {
+            LatexType.SelectedIndex = 0;
             NameInput.Text = null;
             WeightInput.Text = null;
             BucketInput.Text = null;

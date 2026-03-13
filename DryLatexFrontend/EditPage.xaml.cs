@@ -16,13 +16,15 @@ public partial class EditPage : ContentPage
     }
     private async void TestDisplay()
     {
-        
+        //retreive data from database 
         NameInput.Text = bill.Name;
         WeightInput.Text = bill.TotalWeight;
         BucketInput.Text = bill.Bucket;
         DeductInput.Text = bill.Deduct;
         PriceInput.Text = bill.Price;
         TotalInput.Text = bill.Total;
+        Dividened.SelectedItem = bill.Divide;
+        
        
     }
 
@@ -35,8 +37,13 @@ public partial class EditPage : ContentPage
         string deductText = DeductInput.Text;
         string priceText = PriceInput.Text;
         TotalInput.Text = "";
+        string divideText = Dividened.SelectedIndex.ToString();
         // Default name if empty
-       
+        if (string.IsNullOrWhiteSpace(divideText))
+        {
+            divideText = "???????";
+
+        }
 
         if (string.IsNullOrWhiteSpace(bucketText))
         {
@@ -46,7 +53,7 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(weightText))
         {
-            await DisplayAlert("Error", "??????????????????????????", "OK");
+            await DisplayAlert("Error", "?????????????????????????", "OK");
             return;
         }
 
@@ -56,14 +63,14 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(deductText))
         {
-            await DisplayAlert("Error", "?????????????????????????", "OK");
+            await DisplayAlert("Error", "????????????????????????", "OK");
             return;
         }
 
 
         if (string.IsNullOrWhiteSpace(priceText))
         {
-            await DisplayAlert("Error", "???????????????????????", "OK");
+            await DisplayAlert("Error", "??????????????????????", "OK");
             return;
         }
 
@@ -76,7 +83,8 @@ public partial class EditPage : ContentPage
             Bucket = bucketText,
             Deduct = deductText,
             Price = priceText,
-            Total = ""//recalculate in the backend
+            Total = "",//recalculate in the backend
+            Divide = divideText
            
        
         };
@@ -98,7 +106,7 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response","??????????????????????????", "OK");
+                await DisplayAlert("Server Response","?????????????", "OK");
                 TotalInput.Text = result;
             }
             else
@@ -120,6 +128,7 @@ public partial class EditPage : ContentPage
         string deductText = DeductInput.Text;
         string priceText = PriceInput.Text;
         TotalInput.Text = "";
+        string divideText = Dividened.SelectedIndex.ToString();
         // Default name if empty
 
 
@@ -128,10 +137,15 @@ public partial class EditPage : ContentPage
             bucketText = "0";
 
         }
+        if (string.IsNullOrWhiteSpace(divideText))
+        {
+            divideText = "???????";
+
+        }
 
         if (string.IsNullOrWhiteSpace(weightText))
         {
-            await DisplayAlert("Error", "??????????????????????????", "OK");
+            await DisplayAlert("Error", "?????????????????????????", "OK");
             return;
         }
 
@@ -141,14 +155,14 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(deductText))
         {
-            await DisplayAlert("Error", "?????????????????????????", "OK");
+            await DisplayAlert("Error", "?????????????????????", "OK");
             return;
         }
 
 
         if (string.IsNullOrWhiteSpace(priceText))
         {
-            await DisplayAlert("Error", "???????????????????????", "OK");
+            await DisplayAlert("Error", "??????????????????????", "OK");
             return;
         }
 
@@ -161,8 +175,8 @@ public partial class EditPage : ContentPage
             Bucket = bucketText,
             Deduct = deductText,
             Price = priceText,
-            Total = ""//recalculate in the backend
-
+            Total = "",//recalculate in the backend
+            Divide= divideText
 
         };
 
@@ -183,7 +197,7 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response", "??????????????????????????", "OK");
+                await DisplayAlert("Server Response", "????????????", "OK");
                 TotalInput.Text = result;
             }
             else
