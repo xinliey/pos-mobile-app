@@ -12,6 +12,8 @@ namespace DryLatexApp
         public MainPage()
         {
             InitializeComponent();
+            Dividened.SelectedIndex = 0;
+            LatexType.SelectedIndex = 0;
         }
 
 
@@ -23,8 +25,8 @@ namespace DryLatexApp
             string bucketText = BucketInput.Text;
             string deductText = DeductInput.Text;
             string priceText = PriceInput.Text;
-            string divideText = Dividened.SelectedIndex.ToString();
-            string typeText = LatexType.SelectedIndex.ToString();
+            string divideText = Dividened.SelectedItem.ToString();
+            string typeText = LatexType.SelectedItem.ToString();
             // Default name if empty
 
             if (typeText == "ยางแผ่น")
@@ -138,7 +140,7 @@ namespace DryLatexApp
             }*/
         }
 
-        private async void SumBtn_Clicked(object sender, EventArgs e)
+        public static async Task ShowSummary(Page page)
         {
             try
             {
@@ -147,20 +149,21 @@ namespace DryLatexApp
                 var response = await client.PostAsync(
                     "http://192.168.1.147:5205/api/Print/end-day",
                     null);
-                string result = await response.Content.ReadAsStringAsync(); //receiving response from backend 
+
+                string result = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Result", result, "OK"); //display response 
+                    await page.DisplayAlert("รวมยอดบิล", result, "OK");
                 }
                 else
                 {
-                    await DisplayAlert("Error", $"Status: {response.StatusCode}\n\n{result}", "OK");
+                    await page.DisplayAlert("Error", $"Status: {response.StatusCode}\n\n{result}", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.ToString(), "OK");
+                await page.DisplayAlert("Error", ex.ToString(), "OK");
             }
         }
 

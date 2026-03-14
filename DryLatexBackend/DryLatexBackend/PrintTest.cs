@@ -36,7 +36,7 @@ namespace DryLatexBackend.Controllers
                "Database=latexapp;" +
                "User ID=root;" +
                "Password=131001;";
-            string list = @"SELECT Id,CustomerName , totalweight,bucket,deduct,price ,TotalAmount,Divide FROM latexapp.drylatexsum where DATE(CreatedAt) = CURDATE();";
+            string list = @"SELECT Id,CustomerName , totalweight,bucket,deduct,price ,TotalAmount,Divide,isSheet FROM latexapp.drylatexsum where DATE(CreatedAt) = CURDATE() AND isSheet = 0;";
             List<PrintRequest> bills = new List<PrintRequest>();
             using (var conn = new MySqlConnection(connString))
             using (var cmd = new MySqlCommand(list, conn))
@@ -57,7 +57,8 @@ namespace DryLatexBackend.Controllers
 
                             Price = reader["price"].ToString(),
                            Total = reader["TotalAmount"].ToString(),
-                           Divide = reader["Divide"].ToString()
+                           Divide = reader["Divide"].ToString(),
+                           Type = Convert.ToInt32(reader["isSheet"])
                         };
                         bills.Add(bill);
                     }
@@ -65,11 +66,79 @@ namespace DryLatexBackend.Controllers
                
             } return Ok(bills);
         }
+        [HttpGet("GetSheetList")]
+        public IActionResult GetSheetList()
+        {
+            string connString =
+               "Server=localhost;" +
+               "Database=latexapp;" +
+               "User ID=root;" +
+               "Password=131001;";
+            string list = @"SELECT Id,CustomerName , totalweight,bucket,deduct,price ,TotalAmount,Divide,isSheet FROM latexapp.drylatexsum where DATE(CreatedAt) = CURDATE() AND isSheet = 1;";
+            List<PrintRequest> bills = new List<PrintRequest>();
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(list, conn))
+            {
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PrintRequest bill = new PrintRequest
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Name = reader["CustomerName"].ToString(),
+                            TotalWeight = reader["totalweight"].ToString(),
+                            Bucket = reader["bucket"].ToString(),
+                            Deduct = reader["deduct"].ToString(),
+
+                            Price = reader["price"].ToString(),
+                            Total = reader["TotalAmount"].ToString(),
+                            Divide = reader["Divide"].ToString(),
+                            Type = Convert.ToInt32(reader["isSheet"])
+                        };
+                        bills.Add(bill);
+                    }
+                }
+
+            }
+            return Ok(bills);
+        }
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            string connString =
+               "Server=localhost;" +
+               "Database=latexapp;" +
+               "User ID=root;" +
+               "Password=131001;";
+            string del = @"DELETE FROM latexapp.drylatexsum WHERE Id = @Id;";
+            List<PrintRequest> bills = new List<PrintRequest>();
+            using (var conn = new MySqlConnection(connString))
+            using (var cmd = new MySqlCommand(del, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return Ok($"Bill {id} deleted successfully");
+                }
+                else
+                {
+                    return NotFound("Bill not found");
+                }
+            }
+            
+        }
         [HttpPost("EditData")]
         public IActionResult EditData([FromBody] PrintRequest request)
         {
             calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price,request.Divide);
-            UpdateDB(request.Id,request.Name,request.Price, request.Bucket, request.Deduct,request.TotalWeight,request.Divide);
+            UpdateDB(request.Id,request.Name,request.Price, request.Bucket, request.Deduct,request.TotalWeight,request.Divide,request.Type);
             string totalCostAfterUpdate = total.ToString();
             return Ok(total);
 
@@ -78,9 +147,9 @@ namespace DryLatexBackend.Controllers
         public IActionResult EditDataAndPrint([FromBody] PrintRequest request)
         {
             calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price,request.Divide);
-            UpdateDB(request.Id, request.Name, request.Price, request.Bucket, request.Deduct, request.TotalWeight,request.Divide);
+            UpdateDB(request.Id, request.Name, request.Price, request.Bucket, request.Deduct, request.TotalWeight,request.Divide,request.Type);
             string totalCostAfterUpdate = total.ToString();
-            Printing(request);
+            //Printing(request);
             return Ok(total);
 
         }
@@ -120,17 +189,13 @@ namespace DryLatexBackend.Controllers
 
                         decimal weightSheet = reader.GetDecimal("weight_sheet");
                         decimal costSheet = reader.GetDecimal("cost_sheet");
-                        return Ok(new //send response of data as json 
-                        {
-                            drylatex = drylatex,
-                            totalWeight = weightNormal,
-                            totalCost = costNormal,
-
-                            sheetlatex = sheetlatex,
-                            totalSheetWeight = weightSheet,
-                            totalSheetCost = costSheet
-                            //check this later
-                        });
+                        var response = $"ขี้ยาง\n" +
+               $"น้ำหนักขี้ยาง: {weightNormal}\n" +
+               $"เงินขี้ยาง: {costNormal}\n\n" +
+               $"ยางแผ่น\n" +
+               $"น้ำหนักยางแผ่น: {weightSheet}\n" +
+               $"เงินยางแผ่น: {costSheet}";
+                        return Ok(response);
                     }
                 
                 }
@@ -154,12 +219,12 @@ namespace DryLatexBackend.Controllers
         public IActionResult Print([FromBody] PrintRequest request)
         {
             calculatemoney(request.TotalWeight, request.Bucket, request.Deduct, request.Price,request.Divide);
-            Printing(request);
-            SaveNewToDB(request.Name, request.Price, request.Bucket, request.Deduct,request.TotalWeight,request.Divide); //the rest already exists in entire class 
-           
-              
+           // Printing(request);
+            SaveNewToDB(request.Name, request.Price, request.Bucket, request.Deduct,request.TotalWeight,request.Divide, request.Type); //the rest already exists in entire class 
 
-            return Ok("ปริ้นสำเร็จ");
+
+            return Ok(request.Type);
+            //return Ok("ปริ้นสำเร็จ");
 
         }
         private void Printing(PrintRequest request)
@@ -176,6 +241,16 @@ namespace DryLatexBackend.Controllers
             int y = 0;
 
             g.DrawString("ร้านเกษรคลองแงะ", titleFont, Brushes.Black, leftX, y);
+            y += 40;
+            if (request.Type == 0)
+            {
+                g.DrawString("บิลขี้ยาง", font, Brushes.Black, leftX, y);
+            }
+            else
+            {
+                g.DrawString("บิลยางแผ่น", font, Brushes.Black, leftX, y);
+            }
+
             y += 60;
 
             g.DrawString($"ชื่อ: {request.Name}", font, Brushes.Black, leftX, y);
@@ -353,15 +428,15 @@ namespace DryLatexBackend.Controllers
             employeeShare = total * employeeRatio;
 
         }
-        private void SaveNewToDB(string name,string price,string bucket,string deduct,string totalweight,string divide)
+        private void SaveNewToDB(string name,string price,string bucket,string deduct,string totalweight,string divide,int isSheet)
         {//save new data , id will be automized
             string connString =
              "Server=localhost;" +
              "Database=latexapp;" +
              "User ID=root;" +
              "Password=131001;";
-            string sql = @"INSERT INTO latexapp.drylatexsum (CustomerName,totalweight,bucket ,deduct, NetWeight,price, TotalAmount,Divide)
-            VALUES (@Name,@totalweight,@bucket,@deduct,@weight,@price,@total,@divide);";
+            string sql = @"INSERT INTO latexapp.drylatexsum (CustomerName,totalweight,bucket ,deduct, NetWeight,price, TotalAmount,Divide,isSheet)
+            VALUES (@Name,@totalweight,@bucket,@deduct,@weight,@price,@total,@divide,@issheet);";
 
             using (var conn = new MySqlConnection(connString))
             using (var cmd = new MySqlCommand(sql, conn))
@@ -374,20 +449,21 @@ namespace DryLatexBackend.Controllers
                 cmd.Parameters.AddWithValue("@price", price);
                 cmd.Parameters.AddWithValue("@total", total);
                 cmd.Parameters.AddWithValue("@divide", divide);
+                cmd.Parameters.AddWithValue("@issheet", isSheet);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
             }
         }
-        private void UpdateDB(int id, string name , string price, string bucket, string deduct,string totalweight,string divide)
+        private void UpdateDB(int id, string name , string price, string bucket, string deduct,string totalweight,string divide, int isSheet)
         {
             string connString =
             "Server=localhost;" +
             "Database=latexapp;" +
             "User ID=root;" +
             "Password=131001;";
-            string sql = @"Update latexapp.drylatexsum SET CustomerName = @Name, totalweight = @totalweight,bucket = @bucket, deduct=@deduct,NetWeight=@weight ,price = @price,TotalAmount = @total, Divide=@divide WHERE Id = @Id;";
+            string sql = @"Update latexapp.drylatexsum SET CustomerName = @Name, totalweight = @totalweight,bucket = @bucket, deduct=@deduct,NetWeight=@weight ,price = @price,TotalAmount = @total, Divide=@divide , isSheet=@issheet WHERE Id = @Id;";
             using (var conn = new MySqlConnection(connString))
             using (var cmd = new MySqlCommand(sql, conn))
             {
@@ -400,6 +476,7 @@ namespace DryLatexBackend.Controllers
                 cmd.Parameters.AddWithValue("@price", price);
                 cmd.Parameters.AddWithValue("@total", total);
                 cmd.Parameters.AddWithValue("@divide", divide);
+                cmd.Parameters.AddWithValue("@issheet", isSheet);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

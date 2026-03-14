@@ -6,16 +6,7 @@
     <ScrollView>
         <VerticalStackLayout Spacing="20">
             <!-- Component Selection -->
-            <Picker 
-x:Name="LatexType"
-Title="รูปแบบยาง"
-    FontSize="25"
-                SelectedIndex="0">
-                <Picker.Items>
-                    <x:String>ขี้ยาง</x:String>
-                    <x:String>ยางแผ่น</x:String>
-                </Picker.Items>
-            </Picker>
+          
             <Label 
                 Text="บิลขี้ยาง"
                 FontSize="30"
@@ -23,8 +14,26 @@ Title="รูปแบบยาง"
                 HorizontalOptions="Center"
                 Margin="0,30"
                 />
-            
-            
+            <HorizontalStackLayout Spacing="20" VerticalOptions="Center">
+
+                <Label 
+        Text="รูปแบบยาง"
+        FontSize="25"
+        VerticalOptions="Center"/>
+
+                <Picker 
+        x:Name="LatexType"
+        Title=""
+        FontSize="25"
+                    WidthRequest="600">
+                    <Picker.Items>
+                        <x:String>ขี้ยาง</x:String>
+                        <x:String>ยางแผ่น</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            </HorizontalStackLayout>
+
             <!-- Name -->
             <HorizontalStackLayout Spacing="85">
                 <Label
@@ -96,18 +105,24 @@ Placeholder="Enter Price"
                 Keyboard="Numeric"/>
             </HorizontalStackLayout>
             <!-- Component Selection -->
+            <HorizontalStackLayout Spacing="20" VerticalOptions="Center">
+                <Label 
+ Text="รูปแบบยาง"
+ FontSize="25"
+ VerticalOptions="Center"/>
             <Picker 
             x:Name="Dividened"
-            Title="รูปแบบบิล"
+            Title=""
                 FontSize="25"
-                SelectedIndex="0">
+                WidthRequest="600"
+               >
                 <Picker.Items>
                     <x:String>ไม่แบ่ง</x:String>
                     <x:String>6/4</x:String>
                     <x:String>5/5</x:String>
                 </Picker.Items>
             </Picker>
-
+                </HorizontalStackLayout>
 
             <!-- save -->
             <Button
@@ -117,20 +132,9 @@ Placeholder="Enter Price"
                  Margin="0,40"
                 Clicked="OnCounterClicked" />
 
-            <Button
-    x:Name="EditBtn"
-    Text="แก้ไข"
-                FontSize="20"
-                Margin="0,10"
-                Clicked="EditBtn_Clicked"
-            />
+      
             <!-- summarize -->
-            <Button
-      x:Name="SumBtn"
-      Text="สรุปยอดวันนี้"
-      FontSize="20"    
-      Clicked="SumBtn_Clicked"
-      />
+          
 
         </VerticalStackLayout>
     </ScrollView>

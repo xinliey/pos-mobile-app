@@ -1,0 +1,27 @@
+<TabbedPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DryLatexApp"
+    x:Class="DryLatexApp.MenuTab">
+
+    <local:MainPage Title="บิล"/>
+
+    <ContentPage Title="สรุปยอด" Appearing="ReportPage_Appearing">
+        <VerticalStackLayout>
+            <Label Text="สรุปยอด"/>
+        </VerticalStackLayout>
+    </ContentPage>
+    <NavigationPage Title="แก้ไขบิลขี้ยาง">
+        <x:Arguments>
+            <local:EditList />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="แก้ไขบิลยางแผ่น">
+        <x:Arguments>
+            <local:SheetLiat />
+        </x:Arguments>
+    </NavigationPage>
+   
+
+
+</TabbedPage>

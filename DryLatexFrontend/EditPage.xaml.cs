@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text;
 namespace DryLatexApp;
 
@@ -37,13 +37,9 @@ public partial class EditPage : ContentPage
         string deductText = DeductInput.Text;
         string priceText = PriceInput.Text;
         TotalInput.Text = "";
-        string divideText = Dividened.SelectedIndex.ToString();
+        string divideText = Dividened.SelectedItem.ToString();
         // Default name if empty
-        if (string.IsNullOrWhiteSpace(divideText))
-        {
-            divideText = "???????";
-
-        }
+      
 
         if (string.IsNullOrWhiteSpace(bucketText))
         {
@@ -53,7 +49,7 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(weightText))
         {
-            await DisplayAlert("Error", "?????????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่น้ำหนักให้ถูกต้อง", "OK");
             return;
         }
 
@@ -63,14 +59,14 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(deductText))
         {
-            await DisplayAlert("Error", "????????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่หักน้ำให้ถูกต้อง", "OK");
             return;
         }
 
 
         if (string.IsNullOrWhiteSpace(priceText))
         {
-            await DisplayAlert("Error", "??????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่ราคาให้ถูกต้อง", "OK");
             return;
         }
 
@@ -84,8 +80,9 @@ public partial class EditPage : ContentPage
             Deduct = deductText,
             Price = priceText,
             Total = "",//recalculate in the backend
-            Divide = divideText
-           
+            Divide = divideText,
+            Type = bill.Type
+          
        
         };
 
@@ -106,7 +103,7 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response","?????????????", "OK");
+                await DisplayAlert("Server Response","กำลังปริ้น", "OK");
                 TotalInput.Text = result;
             }
             else
@@ -128,7 +125,7 @@ public partial class EditPage : ContentPage
         string deductText = DeductInput.Text;
         string priceText = PriceInput.Text;
         TotalInput.Text = "";
-        string divideText = Dividened.SelectedIndex.ToString();
+        string divideText = Dividened.SelectedItem.ToString();
         // Default name if empty
 
 
@@ -145,7 +142,7 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(weightText))
         {
-            await DisplayAlert("Error", "?????????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่น้ำหนักให้ถูกต้อง", "OK");
             return;
         }
 
@@ -155,14 +152,14 @@ public partial class EditPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(deductText))
         {
-            await DisplayAlert("Error", "?????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่หักน้ำให้ถูกต้อง", "OK");
             return;
         }
 
 
         if (string.IsNullOrWhiteSpace(priceText))
         {
-            await DisplayAlert("Error", "??????????????????????", "OK");
+            await DisplayAlert("Error", "กรุณาใส่ราคาห้ถูกต้อง", "OK");
             return;
         }
 
@@ -176,8 +173,8 @@ public partial class EditPage : ContentPage
             Deduct = deductText,
             Price = priceText,
             Total = "",//recalculate in the backend
-            Divide= divideText
-
+            Divide= divideText,
+                Type = bill.Type
         };
 
         try
@@ -197,12 +194,35 @@ public partial class EditPage : ContentPage
             if (response.IsSuccessStatusCode)
             {
 
-                await DisplayAlert("Server Response", "????????????", "OK");
+                await DisplayAlert("Server Response", "บันถึงสำเร็จ", "OK");
                 TotalInput.Text = result;
             }
             else
             {
                 await DisplayAlert("Error", $"Status: {response.StatusCode}\n\n{result}", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", ex.ToString(), "OK");
+        }
+    }
+
+    private async void Deletebtn_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.DeleteAsync($"http://192.168.1.147:5205/api/Print/Delete/{bill.Id}");
+            if (response.IsSuccessStatusCode)
+            {
+
+                await DisplayAlert("Server Response", "ลบบิลสำเร็จ", "OK");
+               
+            }
+            else
+            {
+                await DisplayAlert("Error", $"Status: {response.StatusCode}\n\n", "OK");
             }
         }
         catch (Exception ex)
